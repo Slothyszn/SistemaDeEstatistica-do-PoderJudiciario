@@ -9,7 +9,7 @@
 
 int main() {
     char linha[1024];
-    char titulos[1000];
+    char cabecalho[1000];
     Processo processos[max_processos];
     int i = 0;
     
@@ -22,7 +22,7 @@ int main() {
     }
 
     // Lê e ignora o cabeçalho
-    fgets(titulos, sizeof(titulos), arquivo);
+    fgets(cabecalho, sizeof(cabecalho), arquivo);
 
     // Lê a linha inteira do processo e salva o processo em um vetor
     while (fgets(linha, sizeof(linha), arquivo) && i < max_processos) {
@@ -31,8 +31,12 @@ int main() {
         i++;
     }
 
+    // Teste de funcionamento, pode apagar a vontade
     printf("primeiro id: %d\n", processos[0].id_processo);
-    printf("primeiro numero sigiloso: %s", processos[0].numero_sigilo);
+    printf("primeiro numero sigiloso: %s\n", processos[0].numero_sigilo);
+    printf("segundo id: %d\n", processos[1].id_processo);
+    printf("segundo numero sigiloso: %s\n", processos[1].numero_sigilo);
+
     
 
     return 0;
