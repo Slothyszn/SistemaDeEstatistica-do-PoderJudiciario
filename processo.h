@@ -10,7 +10,7 @@ typedef struct {
     char sigla_tribunal[10];
     int id_tribunal;
     int recurso;
-    char id_ultimo_oj[50];
+    int id_ultimo_oj;
     char dt_recebimento[11];
     int id_ultima_classe;
     int flag_violencia_domestica;
@@ -34,5 +34,18 @@ typedef struct {
 
 // Função: lerProcesso transforma uma linha CSV em struct Processo
 Processo lerProcesso(char *linha);
+int contarProcessos(FILE *arquivo);
+int buscarUltimoOj(Processo processos[], int total, int id_processo);
+int processoMaisAntigo(Processo processos[], int n);
+void contarCausas(Processo processos[], int n);
+int DiasEntreDatas(Processo *processos, int id_processo, int total);
+
+
 
 #endif
+
+/*O código-fonte a ser construído deve ser capaz de determinar:
+
+o percentual de cumprimento da meta 1;
+e gerar um arquivo CSV com todos os processos julgados (mérito) na Meta 1.
+*/
