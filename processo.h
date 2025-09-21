@@ -21,14 +21,14 @@ typedef struct {
     int flag_infancia;
     char decisao[100];
     char dt_resolvido[11];
-    int cnm1;
-    int primeirasentm1;
-    int baixm1;
-    int decm1;
-    int mpum1;
-    int julgadom1;
-    int desm1;
-    int susm1;
+    char cnm1[10];
+    char primeirasentm1[10];
+    char baixm1[10];
+    char decm1[10];
+    char mpum1[10];
+    char julgadom1[10];
+    char desm1[10];
+    char susm1[10];
 } Processo;
 
 
@@ -37,15 +37,16 @@ Processo lerProcesso(char *linha);
 int contarProcessos(FILE *arquivo);
 int buscarUltimoOj(Processo processos[], int total, int id_processo);
 int processoMaisAntigo(Processo processos[], int n);
-void contarCausas(Processo processos[], int n);
+int contarViolenciaDomestica(Processo processos[], int n);
+int contarFeminicidio(Processo processos[], int n);
+int contarAmbiental(Processo processos[], int n);
+int contarQuilombolas(Processo processos[], int n);
+int contarIndigenas(Processo processos[], int n);
+int contarInfancia(Processo processos[], int n);
 int DiasEntreDatas(Processo *processos, int id_processo, int total);
+double Meta1(Processo *processos, int totalProcessos);
+int ExportarProcessosJulgado(Processo *processos, int totalProcessos, char *nomeArquivo);
 
 
 
 #endif
-
-/*O código-fonte a ser construído deve ser capaz de determinar:
-
-o percentual de cumprimento da meta 1;
-e gerar um arquivo CSV com todos os processos julgados (mérito) na Meta 1.
-*/
