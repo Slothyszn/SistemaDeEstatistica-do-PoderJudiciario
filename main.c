@@ -36,7 +36,7 @@ int main() {
     
 
     // Lê a linha inteira do processo e salva o processo em um vetor
-    while (fgets(linha, sizeof(linha), arquivo) && i <= totalProcessos) {
+    while (fgets(linha, sizeof(linha), arquivo) && i < totalProcessos) {
         linha[strcspn(linha, "\n")] = 0;  // remove o \n 
         processos[i] = lerProcesso(linha); // salva o processo em um vetor
         i++;
