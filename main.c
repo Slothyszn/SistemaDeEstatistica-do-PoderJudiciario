@@ -16,7 +16,7 @@ int main() {
     
     // Abertura do arquivo CSV 
     FILE *arquivo;
-    arquivo = fopen("TJDFT_amostra.csv", "r");
+    arquivo = fopen("TJDFT_filtrado.csv", "r");
     
     // Teste de falha de abertura
     if (arquivo == NULL){
@@ -29,14 +29,14 @@ int main() {
     printf("O arquivo possui %d processos.\n", totalProcessos);
 
     // Cria vetor para guardar os processos
-    Processo processos[totalProcessos];
+    Processo *processos = malloc(sizeof(Processo) * totalProcessos);
 
     // Lê e ignora o cabeçalho
     fgets(cabecalho, sizeof(cabecalho), arquivo);
     
 
     // Lê a linha inteira do processo e salva o processo em um vetor
-    while (fgets(linha, sizeof(linha), arquivo) && i < totalProcessos) {
+    while (fgets(linha, sizeof(linha), arquivo) && i <= totalProcessos) {
         linha[strcspn(linha, "\n")] = 0;  // remove o \n 
         processos[i] = lerProcesso(linha); // salva o processo em um vetor
         i++;
@@ -72,12 +72,14 @@ int main() {
 
     // gerar um arquivo CSV com todos os processos julgados (mérito) na Meta 1
     int contador;
-    contador = ExportarProcessosJulgado(processos, total_processos, "Processos_julgados");
+    contador = ExportarProcessosJulgado(processos, total_processos, "Processos_julgados.csv");
     if (contador == 0) {
         printf("Nenhum arquivo foi julgado!");
     } else {
         printf("total de arquivos julgados(Merito) e salvos no arquivo csv: %d", contador);
     }
+
+    free(processos);
 
     return 0;
 }
