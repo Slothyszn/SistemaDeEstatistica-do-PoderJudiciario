@@ -80,6 +80,7 @@ int main() {
     }
 
     free(processos);
+    fclose(arquivo);
 
     return 0;
 }
