@@ -82,5 +82,8 @@ int main() {
     free(processos);
     fclose(arquivo);
 
+    printf("\n");
+    system("pause");
+
     return 0;
 }
